@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% extends 'index2.html' %}
+{% block content %}
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="slider-area " >
+        <div class="single-slider section-overly slider-height2 d-flex align-items-center" data-background="{% static 'assets/img/hero/about.jpg' %} " style="background-image: url(&quot;C:\Users\aswin\OneDrive\Desktop\about.jpg&quot;);" >
+            <div class="container" >
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="hero-cap text-center">
+                            <h2>Profile</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% for i in data%}
+<div class="container"  >
+
+<div class="profile-container" style="text-align:center;">
+
+        <div class="" style="">
+			        <img class="profile-picture" src="{{i.profile.url}}" alt="Profile Picture" style="width:200px; height:250px; margin-top:50px;">
+
+            <h2>{{i.name}}</h2><br>
+            <p>Email: {{i.email}}</p>
+            <p>Mobile: {{i.mobile}}</p>
+            {% if i.age == 0 %}
+            <p>Age: update Age</p>
+            {% else %}
+            <p>Age: {{i.age}}</p>
+            {% endif %}
+
+            <p>Sex: {{i.sex}}</p>
+            <p>Date Of Birth:{{i.dob}} </p>
+            <p>Address: {{i.address}}</p>
+            <p>Resume:<a href="{{i.resume.url}}" style="color:black;"> View Resume</a> || <a href="{% url 'editresume' dataid=i.id %}" style="color:black;">Edit Resume</a></p>
+            <a href="{% url 'edituser' dataid=i.id %}" style="color:black;">Edit Profile</a> ||
+			<a >Logout</a>||
+			<a href="{% url 'changepassword' %}" style="color:black;">Change Password</a>
+
+        </div>
+</div>
+    {% endfor %}
+</div>
+
+</body>
+</html>
+{% endblock %}

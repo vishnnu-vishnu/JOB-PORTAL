@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+	<style>
+		a{
+		text-decoration: none;
+		}
+	</style>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+	<div class="main-container">
+		<div class="pd-ltr-20">
+			<div class="card-box pd-20 height-100-p mb-30">
+				<div class="row align-items-center">
+
+					<div class="col-md-8">
+						<h4 class="font-20 weight-500 mb-10 text-capitalize">
+							<div class="weight-600 font-30 text-blue">Send Reply</div>
+						</h4>
+						<div>
+							<form method="post" action="{% url 'applicantreply' dataid=data.id %}" enctype="multipart/form-data">
+								{% csrf_token %}
+                                <p><strong>Applicant Name:{{data.name}}</strong></p>
+                                <p><strong>Email:{{data.email}}</strong></p>
+								<input type="text" value="{{data.email}}" name="email">
+                                <p><strong>Mobile:{{data.mobile}}</strong></p>
+                                <p><strong>Applied Position:{{data.job}}</strong></p>
+                                <p><strong>Location:{{data.location}}</strong></p>
+								<div class="form-group row">
+									<strong>
+										<label class="col-sm-12 col-md-2 col-form-label">Reply Applicant</label>
+									</strong>
+									<div class="col-sm-12 col-md-10">
+										<textarea class="form-control" name="rmes"></textarea>
+									</div>
+								</div>
+
+
+								<button class= "btn btn-primary"> Submit</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+</body>
+</html>
+{% endblock %}

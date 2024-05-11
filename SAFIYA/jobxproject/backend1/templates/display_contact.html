@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+
+<head>
+	<style>
+		a{
+		text-decoration: none;
+		}
+	</style>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="pd-20 card-box mb-30" style="margin-left:300px; margin-top:80px;">
+					<div class="clearfix mb-20">
+					</div>
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<th scope="col">Job Name</th>
+								<th scope="col">Type</th>
+								<th scope="col">Experience</th>
+								<th scope="col">Location</th>
+								<th scope="col">Description</th>
+								<th scope="col">Skill</th>
+								<th scope="col">Qualification</th>
+								<th scope="col">LPA</th>
+							</tr>
+						</thead>
+						<tbody>
+                        {% for i in data %}
+							<tr>
+								<td>{{i.jobname}}</td>
+								<td>{{i.jobtype}}</td>
+								<td>{{i.jobexperience}}</td>
+								<td>{{i.joblocation}}</td>
+								<td>{{i.jobdes}}</td>
+								<td>{{i.skills}}</td>
+								<td>{{i.qualification}}</td>
+								<td>{{i.lpa}}</td>
+								<form action="{% url 'editjob' dataid=i.id %}">
+									<td><button type="submit" class="badge badge-primary">Edit</button></td>
+								</form>
+								<form action="{% url 'deletejob' dataid=i.id %}">
+									<td><button type="submit" class="badge badge-primary">Delete</button></td>
+								</form>
+							</tr>
+                        {% endfor %}
+
+				</div>
+
+
+
+
+
+
+</body>
+</html>
+{% endblock %}

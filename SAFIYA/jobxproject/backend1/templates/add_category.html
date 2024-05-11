@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+		a{
+		text-decoration: none;
+		}
+	</style>
+</head>
+<body>
+<h2 style="text-align:center">ADD New opportunities  </h2>
+<div class="bg-secondary rounded h-100 p-4">
+                            <h6 class="mb-4"></h6>
+                            <form method="post" action="{% url 'categorysave' %}" enctype="multipart/form-data" >category
+                                {% csrf_token %}
+                                <div class="mb-3">
+                                     <li class="nav-item dropdown">
+                                         <h5 >Add Job</h5>
+                                   <input class="form-control mb-3" type="text" name="category">
+
+
+                             </li>
+
+                                <div class="mb-3">
+                                    <h5>Job Type</h5>
+                                    <input class="form-control mb-3" type="text" placeholder="" name="jobtype" >
+                                </div>
+                                    <div class="mb-3">
+                                    <h5>location</h5>
+                                    <input class="form-control mb-3" type="text" placeholder="" name="location" >
+                                </div>
+<!--                                <div>-->
+<!--                                    <select class="form-control mb-3" name="location">-->
+<!--                                        <option>select Location</option>-->
+<!--                                        <option>Thiruvanthapuram</option>-->
+<!--                                        <option>kollam</option>-->
+<!--                                        <option>Alapuzha</option>-->
+<!--                                        <option>Idukki</option>-->
+<!--                                        <option>Kottayam</option>-->
+<!--                                        <option>Pathanamthitta</option>-->
+<!--                                        <option>Ernakulam</option>-->
+<!--                                        <option>Thrissur</option>-->
+<!--                                        <option>Palakkad</option>-->
+<!--                                        <option>Malapuram</option>-->
+<!--                                        <option>Kozhikode</option>-->
+<!--                                        <option>Wayanad</option>-->
+<!--                                        <option>Kannur</option>-->
+<!--                                        <option>Kazharkod</option>-->
+<!--                                    </select>-->
+<!--                                </div>-->
+                                <div class="mb-3">
+                                    <h5>Add Experiance</h5>
+                                    <input class="form-control mb-3" type="text" placeholder="" name="experiance" >
+                                </div>
+                                <div class="mb-3" >
+                                    <h5>Job description</h5>
+                                    <textarea class="form-control mb-3" placeholder="" name="jdescription"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <h5>Skills Required</h5>
+                                    <textarea class="form-control mb-3" placeholder="" name="skills"></textarea>
+                                </div>
+                                 <div class="mb-3">
+                                    <h5>Add Qualification</h5>
+                                    <textarea class="form-control mb-3" placeholder="" name="qualification"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <h5>job image</h5>
+                                    <input type="file" name="cimage">
+                                </div>
+                                <br><br>
+
+                                <button type="submit" class="btn btn-primary"> submitt</button>
+                                </div> </form></div>
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src=" https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+
+
+{% if messages %}
+ {% for i in messages %}
+    {% if i.tags == 'warning' %}
+    <script>
+        swal('{{i}}', '','warning');
+    </script>
+    {% elif i.tags == 'error' %}
+    <script>
+        swal('{{i}}', '','error');
+    </script>
+    {% elif i.tags == 'success' %}
+    <script>
+        swal('{{i}}', '','success');
+    </script>
+    {% else %}
+     <script>
+        swal('{{i}}', '','info');
+    </script>
+    {% endif %}
+   {% endfor %}
+{% endif %}
+
+</body>
+</html>
+{% endblock %}

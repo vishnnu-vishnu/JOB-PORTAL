@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+	<style>
+		a{
+		text-decoration: none;
+		}
+	</style>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+	<div class="main-container">
+		<div class="pd-ltr-20">
+			<div class="card-box pd-20 height-100-p mb-30">
+				<div class="row align-items-center">
+
+					<div class="col-md-8">
+						<h4 class="font-20 weight-500 mb-10 text-capitalize">
+							<div class="weight-600 font-30 text-blue">Edit Job</div>
+						</h4>
+						<div>
+							<form method="post" action="{% url 'jobedit' dataid=cat.id %}" enctype="multipart/form-data">
+								{% csrf_token %}
+								{% for i in data %}
+								<input value="{{i.email}}" class="form-control" readonly name="id" type="hidden">
+								<input value="{{i.companyname}}" class="form-control" readonly name="comapnyname" type="hidden">
+								<input value="{{i.profile.url}}" name="profile" type="hidden"  >
+								{% endfor %}
+								<div class="form-group row">
+									<label class="col-sm-12 col-md-2 col-form-label"  >Job Name</label>
+									<div class="col-sm-12 col-md-10">
+										<input class="form-control"  type="text" name="name" required value="{{cat.jobname}}">
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-sm-12 col-md-2 col-form-label">Job Type</label>
+									<div class="col-sm-12 col-md-10">
+										<select class="form-control" name="type">
+											<option>{{cat.jobtype}}</option>
+											<option>Full-Time</option>
+											<option>Part-Time</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-sm-12 col-md-2 col-form-label">Job Experience</label>
+									<div class="col-sm-12 col-md-10">
+										<select class="form-control" name="experience">
+											<option>{{cat.jobexperience}}</option>
+											<option>0-1</option>
+											<option>2</option>
+											<option>3</option>
+											<option>4</option>
+											<option>5</option>
+											<option>6</option>
+											<option>7</option>
+											<option>8</option>
+											<option>9</option>
+											<option>10 and Above</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-sm-12 col-md-2 col-form-label" >Job Location</label>
+									<div class="col-sm-12 col-md-10">
+										<input class="form-control"  type="text" name="location" value="{{cat.joblocation}}">
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-sm-12 col-md-2 col-form-label">Job Description</label>
+									<div class="col-sm-12 col-md-10">
+										<textarea class="form-control" name="description" >{{cat.jobdes}}</textarea>
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-sm-12 col-md-2 col-form-label">Job Skills</label>
+									<div class="col-sm-12 col-md-10">
+										<input class="form-control"  type="text" name="skill" value="{{cat.skills}}">
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-sm-12 col-md-2 col-form-label">Job Qualification</label>
+									<div class="col-sm-12 col-md-10">
+											<input class="form-control"  type="text" name="qualification" value="{{cat.qualification}}">
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-sm-12 col-md-2 col-form-label">LPA</label>
+									<div class="col-sm-12 col-md-10">
+										<input class="form-control"  type="text" name="lpa" value="{{cat.lpa}}">
+									</div>
+								</div>
+								<button class= "btn btn-primary"> Submit</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+</body>
+</html>
+{% endblock %}
